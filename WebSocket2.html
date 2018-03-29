@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style media="screen">
+  :root{
+    font-size: 20px;
+  }
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+    h1{
+      color:blue;
+      text-align: center;
+      font-family: "Helvation Neue", Arial, sans-serif;
+      font-size: lem;
+    }
+    label:hover{
+      color:#fff000;
+    }
+  </style>
+
+ </head>
+ <body>
+   <h1>HTML5 WebSocket chat.</h1>
+   <input type="text" id="text-view">
+   <input type="button" id="send-button" value="send!">
+   <input type="button" id="stop-button" value="stop!">
+   <br/>
+
+   <label id="status-label">status</label>
+
+   <script>
+     var buttonSend = document.getElementById("send-button");
+
+     buttonSend.onclick = function(){
+
+       console.log("Button Clicked!");
+     };
+     if(window.WebSocket){
+       console.log("홍지혁이다,")
+     }
+     else(window.WebSocket){
+       console.log("홍지혁이 아니다,")
+     }
+   </script>
+
+ </body>
+</html>
