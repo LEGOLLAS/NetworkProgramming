@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>웹소켓 실습</title>
+  <style>
+    *{
+      font-family: 'Jeju Gothic', sans-serif;
+    }
+    #header{
+      text-align: center;
+    }
+    #header h2{
+      font-size: 20px;
+    }
+    #header p {
+      font-size:14px;
+      text-align:right;
+    }
+    #content #send fieldset #sendbutton{
+      background-color: blue;
+      color: white;
+    }
+    #content #send fieldset #sendbutton:hover{
+      background-color: white;
+      color: blue;
+      transition: all 0.5s; /*색깔변화에 시간적delay를 주어는 속성*/
+    }
+  </style>
+
+</head>
+<body>
+  <head>
+    <div id="header">
+      <h2>웹소켓 클라이언트(html5)</h2>
+      <p> 작성자 : 홍지혁(2013108209) </p>
+    </div>
+  </head>
+  <hr><!--밑줄-->
+  <section id="content">
+    <div id="send">
+      <fieldset><!-- 다수의 입력폼들을 그룹화하여 관리 및 콘트롤할 수 있다. -->
+        <legend>메시지 전송</legend>
+        <input type="text" id="text-view">
+        <input type="button"id="sendbutton" value="메시지 전송">
+        <input type="button"id="stopButton" value="웹소켓 통신 종료">
+      </fieldset>
+    </div>
+
+    <label id="statusLabel"> 접속상태 </label>
+
+    <div id="res">
+      <fieldset>
+        <legend>메시지 수신</legend>
+        <textarea name="텍스트박스" rows="10" cols="30"></textarea>
+      </fieldset>
+    </div>
+  </section>
+
+  <!--HTML5 웹소켓 API-->
+  <script type="text/javascript">
+    window.onload = function(){
+      var websocket = new websocket("ws://echo.websocket.org");
+      websocket.onOpen = function(event){
+          label.innerHTML = "echo.websocket.org에 접속됨....";
+      }
+      websocket.onMessage = function(event){
+
+      }
+      websocket.onClose = function(event){
+
+      }
+      websocket.onError = function(event){
+
+      }
+      sendbutton.onclick = function(){
+        websocket.send(text-view.value);
+      }
+      stop.onClick = function(){
+        websocket.close();
+      }
+    }
+  </script>
+
+</body>
+</html>
