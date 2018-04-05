@@ -33,7 +33,7 @@
   <head>
     <div id="header">
       <h2>웹소켓 클라이언트(html5)</h2>
-      <p> 작성자 : 홍지혁(2013108209) </p>
+      <p>작성자 : 홍지혁(2013108209)</p>
     </div>
   </head>
   <hr><!--밑줄-->
@@ -42,7 +42,7 @@
       <fieldset><!-- 다수의 입력폼들을 그룹화하여 관리 및 콘트롤할 수 있다. -->
         <legend>메시지 전송</legend>
         <input type="text" id="text-view">
-        <input type="button"id="sendbutton" value="메시지 전송">
+        <input type="button"id="sendButton" value="메시지 전송">
         <input type="button"id="stopButton" value="웹소켓 통신 종료">
       </fieldset>
     </div>
@@ -59,24 +59,26 @@
 
   <!--HTML5 웹소켓 API-->
   <script type="text/javascript">
+  var label = document.getElementById("statusLabel");
+
     window.onload = function(){
-      var websocket = new websocket("ws://echo.websocket.org");
-      websocket.onOpen = function(event){
+      var websocket = new WebSocket("ws://echo.websocket.org");
+      websocket.onopen = function(event){
           label.innerHTML = "echo.websocket.org에 접속됨....";
       }
-      websocket.onMessage = function(event){
+      websocket.onmessage = function(event){
 
       }
-      websocket.onClose = function(event){
+      websocket.onclose = function(event){
 
       }
-      websocket.onError = function(event){
+      websocket.onerror = function(event){
 
       }
-      sendbutton.onclick = function(){
+      sendButton.onclick = function(){
         websocket.send(text-view.value);
       }
-      stop.onClick = function(){
+      stopButton.onclick = function(){
         websocket.close();
       }
     }
