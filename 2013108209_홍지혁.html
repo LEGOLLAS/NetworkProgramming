@@ -17,17 +17,47 @@
       font-size:14px;
       text-align:right;
     }
-    #content #send fieldset #sendbutton{
+    #content #send fieldset #sendButton{
       background-color: blue;
       color: white;
     }
-    #content #send fieldset #sendbutton:hover{
+    #content #send fieldset #sendButton:hover{
       background-color: white;
       color: blue;
       transition: all 0.5s; /*색깔변화에 시간적delay를 주어는 속성*/
     }
   </style>
+    <!--HTML5 웹소켓 API-->
+    <script type="text/javascript">
 
+      window.onload = function(){
+        var textView = document.getElementById("text-view");
+        var buttonSend = document.getElementById("sendButton");
+        var buttonStop = document.getElementById("stopButton");
+        var label = document.getElementById("statusLabel");
+
+        var websocket = new WebSocket("ws://echo.websocket.org");
+
+        websocket.onopen = function(event){
+            label.innerHTML = "echo.websocket.org에 접속됨....";
+        }
+        websocket.onmessage = function(event){
+
+        }
+        websocket.onclose = function(event){
+
+        }
+        websocket.onerror = function(event){
+
+        }
+        sendButton.onclick = function(){
+          websocket.send(text-view.value);
+        }
+        stopButton.onclick = function(){
+          websocket.close();
+        }
+      }
+    </script>
 </head>
 <body>
   <head>
@@ -56,33 +86,6 @@
       </fieldset>
     </div>
   </section>
-
-  <!--HTML5 웹소켓 API-->
-  <script type="text/javascript">
-  var label = document.getElementById("statusLabel");
-
-    window.onload = function(){
-      var websocket = new WebSocket("ws://echo.websocket.org");
-      websocket.onopen = function(event){
-          label.innerHTML = "echo.websocket.org에 접속됨....";
-      }
-      websocket.onmessage = function(event){
-
-      }
-      websocket.onclose = function(event){
-
-      }
-      websocket.onerror = function(event){
-
-      }
-      sendButton.onclick = function(){
-        websocket.send(text-view.value);
-      }
-      stopButton.onclick = function(){
-        websocket.close();
-      }
-    }
-  </script>
 
 </body>
 </html>
